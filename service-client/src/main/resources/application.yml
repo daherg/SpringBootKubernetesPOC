@@ -1,0 +1,15 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: service-client
+
+logging:
+  file: /logs/${spring.application.name}.log
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging: DEBUG

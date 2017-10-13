@@ -1,0 +1,15 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: service-addressbook
+
+logging:
+  file: /logs/${spring.application.name}.log
+  level:
+    org:
+      springframework:
+        boot:
+          autoconfigure:
+            logging: DEBUG
