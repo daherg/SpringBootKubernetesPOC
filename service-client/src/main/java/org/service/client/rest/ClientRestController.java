@@ -16,7 +16,7 @@ public class ClientRestController {
     @RequestMapping("/")
     public String getClientPage(Model model) {
         // Get the gateway service
-        model.addAttribute("addressbookservice", "http://service-addressbook-service:8081");
+        model.addAttribute("addressbookservice", "http://192.168.99.101:30301");
         return "webpage";
     }
 }

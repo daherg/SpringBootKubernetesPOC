@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: service-client
-        image: gdaher2017/service-client:v2
+        image: gdaher2017/service-client:v3
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 8080
