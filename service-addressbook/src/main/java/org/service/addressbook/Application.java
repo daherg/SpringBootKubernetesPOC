@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cloud.sleuth.Sampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -29,11 +28,6 @@ public class Application {
     @Bean
     public RestTemplate rest(RestTemplateBuilder builder) {
         return builder.build();
-    }
-
-    @Bean
-    Sampler sampler() {
-        return span -> true;
     }
 
     @ApiOperation(value = "Get a addressbook with a number of people. This request gets the complete list of people.", response = ModelPerson.class)

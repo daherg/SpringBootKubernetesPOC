@@ -14,6 +14,8 @@ import java.util.logging.Logger;
 @Service
 public class AddressbookRestController {
 
+    private String peopleHost = "http://service-people-service:8082";
+
     @Autowired
     private RestTemplate restTemplate;
     private final Logger LOG = Logger.getLogger(AddressbookRestController.class.getName());
@@ -24,7 +26,7 @@ public class AddressbookRestController {
 
     public List<ModelPerson> getAddressBookMultiple(int peopleCount) {
         // Get the people service
-        String peopleURL = "http://localhost:8082" + "/getPeopleMultiple/" + peopleCount;
+        String peopleURL = peopleHost + "/getPeopleMultiple/" + peopleCount;
         LOG.log(Level.INFO, "### Service AddressBookMultiple Request: " + peopleURL);
 
         // Get info from other service
@@ -35,7 +37,7 @@ public class AddressbookRestController {
 
     public List<ModelPerson> getAddressBookSingle(int peopleCount) {
         // Get the people service
-        String peopleURL = "http://localhost:8082" + "/getPeopleSingle/";
+        String peopleURL = peopleHost + "/getPeopleSingle/";
         LOG.log(Level.INFO, "### Service getAddressBookSingle Request: " + peopleURL + ". peopleCount = " + peopleCount);
 
         // Generate a list of persons

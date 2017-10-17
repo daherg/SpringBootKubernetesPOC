@@ -1,0 +1,36 @@
+#
+# Deployment Declaration
+#
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service-addressbook-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: service-addressbook
+    spec:
+      containers:
+      - name: service-addressbook
+        image: gdaher2017/service-addressbook:v2
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8081
+---
+#
+# Service Declaration
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-addressbook-service
+spec:
+  type: NodePort
+  selector:
+    name: service-addressbook
+  ports:
+  - port: 8081
+    targetPort: 8081
+    nodePort: 30301

@@ -1,0 +1,36 @@
+#
+# Deployment Declaration
+#
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: service-people-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: service-people
+    spec:
+      containers:
+      - name: service-people
+        image: gdaher2017/service-people:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8082
+---
+#
+# Service Declaration
+#
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-people-service
+spec:
+  type: NodePort
+  selector:
+    name: service-people
+  ports:
+  - port: 8082
+    targetPort: 8082
+    nodePort: 30302

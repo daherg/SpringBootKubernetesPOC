@@ -1,7 +1,5 @@
 package org.service.people.rest;
 
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import org.service.people.helper.HelperRandom;
 import org.service.people.model.ModelPerson;
 import org.springframework.stereotype.Service;
@@ -55,12 +53,6 @@ public class PeopleRestController {
         return person;
     }
 
-    @HystrixCommand(fallbackMethod = "getTestAlternative", commandProperties = {
-            @HystrixProperty(name = "circuitBreaker.sleepWindowInMilliseconds", value = "5000"),
-            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "5000"),
-            @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50"),
-            @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "5")
-    })
     public String getException() throws Exception {
         LOG.log(Level.INFO, "### Service getException");
         throw new Exception("Exception in Service People");

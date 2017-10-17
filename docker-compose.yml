@@ -1,0 +1,22 @@
+version: "3"
+services:
+  service-client:
+    build:
+      context: ./service-client
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+
+  service-addressbook:
+    build:
+      context: ./service-addressbook
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+
+  service-people:
+    build:
+      context: ./service-people
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
